@@ -37,14 +37,14 @@ def analyze_text(text):
         if pos1 not in valid_pos and pos2 not in valid_pos:
             continue
         # Получаем грамматические характеристики
-        gender1 = parsed1.tag.gender  # Род первого слова
-        gender2 = parsed2.tag.gender  # Род второго слова
+        gender1 = parsed1.tag.gender  # Род первого и второго слов
+        gender2 = parsed2.tag.gender  
         
-        number1 = parsed1.tag.number  # Число первого слова
-        number2 = parsed2.tag.number  # Число второго слова
+        number1 = parsed1.tag.number  # Число первого и второго слов
+        number2 = parsed2.tag.number  
         
-        case1 = parsed1.tag.case     # Падеж первого слова
-        case2 = parsed2.tag.case     # Падеж второго слова
+        case1 = parsed1.tag.case     # Падеж первого и второго слов
+        case2 = parsed2.tag.case     
         
         # Проверяем согласование по роду, числу и падежу
         # Учитываем, что некоторые характеристики могут быть None
@@ -57,7 +57,7 @@ def analyze_text(text):
         
         # Если все три характеристики совпадают
         if gender_match and number_match and case_match:
-            # Получаем леммы (нормальные формы)
+            # Получаем леммы 
             lemma1 = parsed1.normal_form
             lemma2 = parsed2.normal_form
             
@@ -80,10 +80,10 @@ def main():
         print(f"Ошибка при чтении файла: {e}")
         return
     
-    # Анализируем текст
+    
     pairs = analyze_text(text)
     
-    # Выводим результаты
+    
     if not pairs:
         print("Не найдено пар, удовлетворяющих условиям.")
     else:
